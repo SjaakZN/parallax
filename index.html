@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Parallax</title>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="src/style.css" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="src/parallax.js"></script>
+	<script type="text/javascript" src="src/parallax.demo.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			Parallax.demo();
+			Parallax.initialize();
+		});
+	</script>
+</head>
+<body>
+	<section id="slide_01" class="slide" data-ratio="1.0">
+        <h1>1.0</h1>
+        <div id="tour">Take A Tour</div>
+	</section>
+	<section id="slide_02" class="slide top bottom" data-ratio="75%">
+		<h1>75%</h1>
+	</section>
+	<section id="slide_03" class="slide" data-ratio="2to1">
+		<h1>2to1</h1>
+	</section>
+	<section id="slide_04" class="slide top" data-ratio="25%">
+		<h1>25%</h1>
+        <div id="top">Top</div>
+	</section>
+</body>
+</html>

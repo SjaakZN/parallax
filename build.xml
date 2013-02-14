@@ -1,0 +1,38 @@
+<project name="parallax" default="compile_css" basedir=".">
+	<property name="dist" value="./dist/" />
+	<property name="src" value="./src" />
+
+	<target name="init" description="Setting up...">
+		<tstamp />
+		<mkdir dir="${dist}" />
+	</target>
+
+	<target name="compile_js" depends="init" description="Compiling javascript...">
+		<apply executable="java" parallel="false" verbose="true" dest="${dist}">
+			<fileset dir="${src}">
+				<include name="*.js" />
+			</fileset>
+			<arg line="-jar" />
+			<arg path="build/compiler.jar" />
+			<arg value="--warning_level" />
+			<arg value="QUIET" />
+			<arg value="--js_output_file" />
+			<targetfile />
+			<arg value="--js" />
+			<mapper type="glob" from="*.js" to="*.min.js" />
+		</apply>
+	</target>
+
+	<target name="compile_css" depends="compile_js" description="Compiling CSS...">
+		<apply executable="java" parallel="false" verbose="true" dest="${dist}">
+			<fileset dir="${src}">
+				<include name="*.css" />
+			</fileset>
+			<arg line="-jar" />
+			<arg path="build/yuicompressor.jar" />
+			<arg value="-o" />
+			<targetfile />
+			<mapper type="glob" from="*.css" to="*.min.css" />
+		</apply>
+	</target>
+</project>
